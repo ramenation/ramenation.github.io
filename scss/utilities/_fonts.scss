@@ -1,0 +1,37 @@
+// ==========================================================================
+// $google-fonts-url
+// ==========================================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,400;0,700;1,400&display=swap');
+
+// ==========================================================================
+// $font-face
+// ==========================================================================
+
+@font-face {
+  font-family: 'Pally';
+  src: url('assets/fonts/Pally-Regular.woff2') format('woff2'),
+       url('assets/fonts/Pally-Regular.woff') format('woff'),
+       url('assets/fonts/Pally-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pally';
+  src: url('assets/fonts/Pally-Bold.woff2') format('woff2'),
+       url('assets/fonts/Pally-Bold.woff') format('woff'),
+       url('assets/fonts/Pally-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Social Monster';
+  src: local('Social Monster Regular'),
+       url('assets/fonts/Social-Monster.woff') format('woff');
+  font-style: normal;
+  font-weight: normal;
+}

@@ -1,0 +1,17 @@
+// Templates
+// =========
+
+// @source - http://atomicdesign.bradfrost.com/chapter-2/#templates
+
+// Templates are page-level objects that place components into a layout and articulate the design’s underlying content structure. They display all the necessary page components functioning together, which provides context for these relatively abstract molecules and organisms
+
+// Templates focus on the page’s underlying content structure rather than the page’s final content. They are the skeleton of each page.
+
+
+
+
+// ==========================================================================
+// $imports
+// ==========================================================================
+
+@import 'post';

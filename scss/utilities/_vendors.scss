@@ -1,0 +1,111 @@
+// ==========================================================================
+// $codekit imports
+// ==========================================================================
+
+@import 'bourbon',
+        'susy';
+
+
+
+
+// ==========================================================================
+// $include-media
+// ==========================================================================
+
+// include-media is a Sass library for writing CSS media queries in an easy and maintainable way, using a natural and simplistic syntax.
+// http://include-media.com/
+
+@import '../../node_modules/include-media/dist/include-media';
+
+
+
+
+// ==========================================================================
+// $typi
+// ==========================================================================
+
+// Typi helps you write font-size and line-height declarations, helps you calculate vertical rhythm.
+// https://github.com/zellwk/typi
+
+@import '../../node_modules/typi/scss/typi';
+
+
+
+
+// ==========================================================================
+// $family
+// ==========================================================================
+
+// Family.scss is a set of 26 smart Sass mixins which will help you to manage the style of :nth-child'ified elements, in an easy and classy way.
+// http://lukyvj.github.io/family.scss/
+
+@import '../../node_modules/family.scss/source/src/family';
+
+
+
+
+// ==========================================================================
+// $css-hamburgers
+// ==========================================================================
+
+// Hamburgers is a collection of tasty CSS-animated hamburger icons.
+// https://jonsuh.com/hamburgers/
+
+
+// // Settings
+// // ==================================================
+// $hamburger-padding-x           : 15px;
+// $hamburger-padding-y           : 15px;
+// $hamburger-layer-width         : 40px;
+// $hamburger-layer-height        : 4px;
+// $hamburger-layer-spacing       : 6px;
+// $hamburger-layer-color         : #000;
+// $hamburger-layer-border-radius : 4px;
+// $hamburger-hover-opacity       : 0.7;
+// $hamburger-active-layer-color  : $hamburger-layer-color;
+// $hamburger-active-hover-opacity: $hamburger-hover-opacity;
+
+// // To use CSS filters as the hover effect instead of opacity,
+// // set $hamburger-hover-use-filter as true and
+// // change the value of $hamburger-hover-filter accordingly.
+// $hamburger-hover-use-filter   : false;
+// $hamburger-hover-filter       : opacity(50%);
+// $hamburger-active-hover-filter: $hamburger-hover-filter;
+
+// // Types (Remove or comment out what you don’t need)
+// // ==================================================
+// $hamburger-types: (
+//   3dx,
+//   3dx-r,
+//   3dy,
+//   3dy-r,
+//   3dxy,
+//   3dxy-r,
+//   arrow,
+//   arrow-r,
+//   arrowalt,
+//   arrowalt-r,
+//   arrowturn,
+//   arrowturn-r,
+//   boring,
+//   collapse,
+//   collapse-r,
+//   elastic,
+//   elastic-r,
+//   emphatic,
+//   emphatic-r,
+//   minus,
+//   slider,
+//   slider-r,
+//   spin,
+//   spin-r,
+//   spring,
+//   spring-r,
+//   stand,
+//   stand-r,
+//   squeeze,
+//   vortex,
+//   vortex-r
+// );
+
+// @import '../../node_modules/css-hamburgers/_sass/hamburgers/hamburgers';

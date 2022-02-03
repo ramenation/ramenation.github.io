@@ -1,0 +1,21 @@
+// Atoms
+// =====
+
+// @source - http://atomicdesign.bradfrost.com/chapter-2/#atoms
+
+// If atoms are the basic building blocks of matter, then the atoms of our interfaces serve as the foundational building blocks that comprise all our user interfaces. Therefore these atoms would include basic HTML tags like form labels, inputs, buttons, and other elements that can’t be broken down any further without ceasing to be functional.
+
+// In the context of a pattern library, atoms demonstrate all your base styles at a glance, which can be a helpful reference to keep coming back to as you develop and maintain your design system.
+
+
+
+
+// ==========================================================================
+// $imports
+// ==========================================================================
+
+@import 'base',
+        'animations',
+        'labels',
+        'inputs',
+        'buttons';

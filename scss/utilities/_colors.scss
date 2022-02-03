@@ -1,0 +1,43 @@
+// ==========================================================================
+// $colors base
+// ==========================================================================
+
+$white:                       #FFFFFF;
+$black:                       #000000;
+
+$hopbush:                     #CC6699;
+$bouquet:                     #B37399;
+$patina:                      #669999;
+
+
+
+
+// ==========================================================================
+// $main palette
+// ==========================================================================
+
+$color-primary:               $hopbush;
+$color-secondary:             $bouquet;
+$color-accent:                $patina;
+
+$color-shadow:                rgba($black, 0.125);
+$color-debug:                 rgba(17, 220, 173, 0.25);
+$color-selection:             #FFFFCC;
+
+
+//
+// $lighter
+// ==========================================================================
+
+$color-primary-lighter:       tint($color-primary, 15%);
+$color-secondary-lighter:     tint($color-secondary, 15%);
+$color-accent-lighter:        tint($color-accent, 15%);
+
+
+//
+// $darker
+// ==========================================================================
+
+$color-primary-darker:        shade($color-primary, 15%);
+$color-secondary-darker:      shade($color-secondary, 15%);
+$color-accent-darker:         shade($color-accent, 15%);

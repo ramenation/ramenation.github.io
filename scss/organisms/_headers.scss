@@ -1,0 +1,90 @@
+// ==========================================================================
+// $header
+// ==========================================================================
+
+header {
+  width: 100%;
+  padding: 5% 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 88;
+  will-change: transform;
+  transition: transform 200ms ease-in-out;
+    
+  &.headroom--top,
+  &.headroom--pinned {
+    transform: translateY(0) !important;
+  }
+
+  &.headroom--not-top.headroom--unpinned {
+    transform: translateY(-100%);
+  }
+
+  .container {
+    width: 90%;
+  }
+
+  ul {
+    @include reset-list;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    padding: rem(25 0);
+  }
+}
+
+
+
+// ==========================================================================
+// $sidebar
+// ==========================================================================
+
+#sidebar {
+  width: 100%;
+  height: 100%;
+  max-width: rem(650);
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  background-color: $black;
+  background-image: img('mm-bg-aside.jpg');
+  background-size: cover;
+  transition: all 0.3s ease-in-out;
+  color: $white;
+
+  ul {
+    @include reset-list;
+    @include center(absolute);
+
+    a {
+      text-decoration: none;
+      font-size: 1.5em;
+    }
+  }
+
+  li {
+    @include typi('heading-l');
+    font-family: $font-family-heading;
+    margin-top: 1em;
+  }
+
+  p {
+    padding-top: 1em;
+    text-align: right;
+  }
+
+  &.active {
+    right: 0;
+  }
+
+  @include media('>=desktop') {
+    ul a {
+      font-size: inherit;
+    }
+  }
+}

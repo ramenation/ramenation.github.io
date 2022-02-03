@@ -1,0 +1,91 @@
+// ==========================================================================
+// $susy settings
+// ==========================================================================
+
+$susy: (
+  'columns':                  susy-repeat(12),
+  'gutters':                  0.25,
+  'spread':                   'narrow',
+  'container-spread':         'narrow'
+);
+
+
+
+
+// ==========================================================================
+// $breakpoints
+// ==========================================================================
+
+// @required for  - `media()` mixin
+// @source        - http://include-media.com/
+
+$breakpoints: (
+  mobile:                     em(599),
+  tablet:                     em(600),
+  tablet-l:                   em(960),
+  desktop:                    em(1260),
+  desktop-l:                  em(1900),
+  desktop-xl:                 em(2500)
+);
+
+
+
+
+// ==========================================================================
+// $typi
+// ==========================================================================
+
+// @required for  - `typi()` mixin
+// @source        - https://github.com/zellwk/typi
+
+$typi: (
+  base: (
+    null:                     ($base-font-size, $base-line-height)
+  ),
+
+  heading-xl: (
+    null:                     (32px, $base-line-height),
+    tablet:                   (45px),
+    desktop:                  (54px),
+    desktop-l:                (63px)
+  ),
+
+  heading-l: (
+    null:                     (27px, $base-line-height),
+    tablet:                   (36px),
+    desktop:                  (45px),
+    desktop-l:                (54px)
+  ),
+
+  heading: (
+    null:                     (22px, $base-line-height),
+    tablet:                   (27px),
+    desktop:                  (36px),
+    desktop-l:                (38px)
+  ),
+
+  p: (
+    null:                     (18px, $base-line-height),
+    desktop:                  (24px),
+    desktop-l:                (28px)
+  ),
+);
+
+
+
+
+// ==========================================================================
+// $z-index
+// ==========================================================================
+
+$z-index: (
+  overlay:                   900,
+  dropdown:                  800,
+  nav:                       700,
+  header:                    600,
+  footer:                    500,
+  pseudo:                    400,
+  overlap:                   200,
+  default:                   1,
+  bottomless-pit:            -100
+);

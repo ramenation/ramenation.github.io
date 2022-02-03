@@ -1,0 +1,341 @@
+// ==========================================================================
+// $hero
+// ==========================================================================
+
+#hero {
+  width: 100%;
+  min-height: 40vh;
+  margin-bottom: 15vh;
+  padding: 0;
+  background-image: img('mm-bg-1.jpg');
+  background-position: bottom center;
+  background-size: cover;
+
+  img {
+    @include center(horizontal);
+    width: 80%;
+    top: 20vh;
+    margin: 0 auto;
+    border-radius: rem(10);
+  }
+
+  @include media('>=tablet') {
+    min-height: 45vh;
+
+    img {
+      width: span(7);
+    }
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    min-height: 80vh;
+    margin-bottom: 40vh;
+
+    img {
+      width: span(6);
+    }
+  }
+}
+
+
+
+
+// ==========================================================================
+// $intro
+// ==========================================================================
+
+#intro {
+  h2 {
+    @include typi('heading-xl');
+  }
+
+  p {
+    @include typi('heading-l');
+    font-family: $font-family-heading;
+  }
+
+  .container {
+    padding-bottom: span(1);
+  }
+
+  @include media('>=tablet') {
+    .container {
+      padding-right: span(1);
+    }  
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    .container {
+      padding-right: span(2);
+    }
+  }
+}
+
+.intro__lilguy {
+  display: none;
+
+  @include media('>=tablet-l', 'landscape') {
+    display: block;
+    width: span(1.75);
+    margin-left: 95% - span(1.75);
+    position: sticky;
+    top: 76vh;
+    right: 0;
+
+    + .container {
+      margin-top: -30vh;
+    }
+  }
+}
+
+
+.intro__monsters {
+  @include media('>=tablet-l', 'landscape') {
+    padding-left: 5%;
+    padding-right: span(1.75);
+  }
+}
+
+
+
+// ==========================================================================
+// $mint
+// ==========================================================================
+
+#mint {
+  padding-top: 0;
+  border-top: rem(3) solid;
+  border-bottom: rem(3) solid;
+  background-image: img('mm-bg-2.jpg');
+  background-position: center;
+  background-size: cover;
+  text-transform: uppercase;
+
+  @include media('>=tablet-l', 'landscape') {
+    border-top-width: rem(7);
+    border-bottom-width: rem(7);
+  }
+}
+
+
+// ==========================================================================
+// $about
+// ==========================================================================
+
+#about {
+  @include media('>=tablet') {
+    .container {
+      padding: 0 span(1);
+    }
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    .container {
+
+      p {
+        padding-right: span(2);
+      }
+    }
+  }
+}
+
+
+
+
+
+// ==========================================================================
+// $gallery
+// ==========================================================================
+
+#gallery {
+  ul {
+    @include reset-list;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  li {
+    width: span(6) - gutter(12);
+    margin-bottom: gutter(5);
+    border-radius: rem(10);
+    overflow: hidden;
+    border: rem(3) solid;
+  }
+
+  @include media('>=tablet') {
+    li {
+      width: span(3);
+      margin-bottom: gutter(8);
+    }
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    li {
+      border-width: rem(6);
+    }
+  }
+}
+
+
+
+// ==========================================================================
+// $roadmaps
+// ==========================================================================
+
+.roadmap {
+  margin: 0 auto span(1);
+
+  @include media('>=tablet') {
+    width: span(10);
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    width: span(7.5);
+  }
+}
+
+.roadmap__title {
+  padding: 0 gutter(5);
+  border: rem(3) solid;
+  border-radius: rem(10 10 0 0);
+  background-size: cover;
+
+  .roadmap:nth-child(3n+1) & {
+    background-image: img('mm-bg-5.jpg');
+  }
+
+  .roadmap:nth-child(3n+2) & {
+    background-image: img('mm-bg-3.jpg');
+  }
+
+  .roadmap:nth-child(3n+3) & {
+    background-image: img('mm-bg-4.jpg');
+  }
+
+  h3 {
+    font-weight: normal;
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    border-width: rem(6);
+  }
+}
+
+.roadmap__content {
+  padding: 1px gutter(5);
+  border: rem(3) solid;
+  border-top: 0;
+  border-radius: rem(0 0 10 10);
+  background-color: #EFEFEF;
+
+  @include media('>=tablet-l', 'landscape') {
+    border-width: rem(6);
+  }
+}
+
+
+
+
+// ==========================================================================
+// $artist
+// ==========================================================================
+
+#artist {
+  margin-top: span(3);
+  padding-bottom: span(1.5);
+  background-image: img('mm-bg-6.jpg');
+  background-size: cover;
+  border-top: rem(3) solid;
+  border-bottom: rem(3) solid;
+
+  @include media('>=tablet') {
+    padding-bottom: rem(80);
+    border-top-width: rem(7);
+    border-bottom-width: rem(7);
+  }
+  
+  @include media('>=tablet-l', 'landscape') {
+    margin-top: rem(200);
+    padding-bottom: rem(150);
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
+
+.artist__img {
+  border-radius: rem(10);
+  border: rem(3) solid;
+  overflow: hidden;
+
+  @include media('>=tablet') {
+    width: span(8);
+    margin: 0 auto;
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    width: span(5);
+    border-width: rem(6);
+  }
+}
+
+.artist__content {
+  @include media('>=tablet') {
+    width: span(8);
+    margin: 0 auto;
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    width: span(6);
+  }
+}
+
+
+
+
+// ==========================================================================
+// $partners
+// ==========================================================================
+
+#partners {
+  ul {
+    @include reset-list;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    li {
+      width: span(3.5);
+      margin-bottom: gutter(6);
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    ul li {
+      width: span(1.75);
+    }
+  }
+}
+
+
+// ==========================================================================
+// $faws
+// ==========================================================================
+
+#faqs {
+  margin: 0 auto;
+  
+  @include media('>=tablet') {
+    width: span(10);
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    width: span(8);
+  }
+}

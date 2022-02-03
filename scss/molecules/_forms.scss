@@ -1,0 +1,45 @@
+// ==========================================================================
+// $form
+// ==========================================================================
+
+form {
+  max-width: rem(800);
+  padding: gutter(6) span(1);
+  margin: 0 auto;
+  border: rem(3) solid;
+  border-radius: rem(20);
+  background-color: #B7D067;
+
+  @include media('>=tablet') {
+    width: span(10);
+    padding: rem(30 50);
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    width: span(7);
+    padding: rem(30 80);
+  }
+}
+
+.form__heading {
+  margin: 0 auto rem(60);
+  text-align: center;
+
+  h2 {
+    margin-bottom: 0.3em;
+  }
+}
+
+
+.form__wrap:last-child {
+  margin-top: 3em;
+  text-align: center;
+}
+
+#order-form {
+  margin-bottom: rem(100);
+
+  @include media('>=tablet-l', 'landscape') {
+    margin-bottom: rem(150);
+  }
+}

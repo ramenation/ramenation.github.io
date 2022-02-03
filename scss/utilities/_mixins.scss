@@ -1,0 +1,227 @@
+// ==========================================================================
+// $reset-list
+// ==========================================================================
+
+/// Resets default list styling.
+/// @usage - `@include reset-list`
+
+@mixin reset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+
+// ==========================================================================
+// $hover
+// ==========================================================================
+
+/// Create pseduo-classes for `:hover`, `:active`, and `:focus`.
+/// @usage - `@include hover`
+
+@mixin hover {
+  &:hover,
+  &:active,
+  &:focus {
+    @content;
+  }
+}
+
+
+
+
+// ==========================================================================
+// $center
+// ==========================================================================
+
+/// Position child element in center of parent
+/// @usage - `@include center($position)`
+
+@mixin center($position: absolute) {
+  position: absolute;
+
+  @if $position == absolute {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+  } @else if $position == horizontal {
+    transform: translateX(-50%);
+    left: 50%;
+
+  } @else if $position == vertical {
+    transform: translateY(-50%);
+    top: 50%;
+  }
+}
+
+
+
+
+// ==========================================================================
+// $hide elements
+// ==========================================================================
+
+//
+// $hidden
+// ==========================================================================
+
+/// Hide from both screenreaders and browsers
+/// @usage - `@include hidden`
+
+@mixin hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+
+//
+// $invisible
+// ==========================================================================
+
+/// Hide visually and from screen readers, but maintain layout
+/// @usage - `@include invisible`
+
+@mixin invisible {
+  visibility: hidden;
+}
+
+
+
+
+// ==========================================================================
+// $font-smoothing
+// ==========================================================================
+
+@mixin font-smoothing($value: antialiased) {
+  @if $value == antialiased {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  } @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+
+
+
+// ==========================================================================
+// $smart-underline
+// =========================================================================//
+
+/// Make underlines respect descenders
+/// @usage - `@include underline`
+
+@mixin underline($background: $white, $text: $black, $selection: $color-selection, $position: 86%) {
+  text-decoration: none;
+  outline: 0;
+
+  background: {
+    image: linear-gradient($background, $background),
+           linear-gradient($background, $background),
+           linear-gradient($text, $text);
+    position-x: 0%, 100%, 0%;
+    position-y: $position,$position, $position;
+    repeat: no-repeat, no-repeat, repeat-x;
+    size: .05em 1px, .05em 1px, 1px 1px;
+  }
+
+  text-shadow: 0.03em 0 $background,
+               -0.03em 0 $background,
+               0 0.03em $background,
+               0 -0.03em $background,
+               0.06em 0 $background,
+               -0.06em 0 $background,
+               0.09em 0 $background,
+               -0.09em 0 $background,
+               0.12em 0 $background,
+               -0.12em 0 $background,
+               0.15em 0 $background,
+               -0.15em 0 $background;
+
+  &::selection {
+    text-shadow: 0.03em 0 $selection,
+                 -0.03em 0 $selection,
+                 0 0.03em $selection,
+                 0 -0.03em $selection,
+                 0.06em 0 $selection,
+                 -0.06em 0 $selection,
+                 0.09em 0 $selection,
+                 -0.09em 0 $selection,
+                 0.12em 0 $selection,
+                 -0.12em 0 $selection,
+                 0.15em 0 $selection,
+                 -0.15em 0 $selection;
+    background: $selection;
+  }
+
+  &:before, &:after, *, *:before, *:after {
+    text-shadow: none;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+
+
+
+// ==========================================================================
+// $viewport units fix for iPhone
+// ==========================================================================
+
+/// Fix for vw, vh, vmin, vmax on iOS 7.
+/// http://caniuse.com/#feat=viewport-units
+/// @usage - @include viewport-unit(height, 50vh);
+/// @usage - @include viewport-unit(font-size, 5vmin);
+
+@mixin viewport-unit($property, $value) {
+  #{$property}: $value;
+
+  $unit: unit($value);
+
+  @if (index((vw, vh, vmin, vmax), $unit) != null) {
+    $devices: (
+      (em(786), em(1024)),    // iPad (all versions)
+      (em(1024), em(1366)),   // iPad Pro
+      (em(320), em(480)),     // iPhone 4
+      (em(320), em(568)),     // iPhone 5, 5C, 5S
+      (em(375), em(667)),     // iPhone 6, 7, 8
+      (em(414), em(736)),     // iPhone 6 Plus, 7 Plus
+      (em(375), em(812))      // iPhone X
+    );
+
+    @each $device in $devices {
+      $device-width: nth($device, 1);
+      $device-height: nth($device, 2);
+
+      $device-query: "only screen and (-webkit-min-device-pixel-ratio: 1)";
+      $device-query: "#{$device-query} and (device-width: #{$device-width})";
+      $device-query: "#{$device-query} and (device-height: #{$device-height})";
+
+      $percent: $value / ($value * 0 + 1); // see https://github.com/sass/sass/issues/533
+
+      $percent-width: $device-width * $percent / 100;
+      $percent-height: $device-height * $percent / 100;
+
+      @if ($unit == vmin or $unit == vmax) {
+        @media #{$device-query} {
+          #{$property}: if($unit == vmin, $percent-width, $percent-height);
+        }
+      }
+      @else {
+        @media #{$device-query} and (orientation: portrait) {
+          #{$property}: if($unit == vw, $percent-width, $percent-height);
+        }
+
+        @media #{$device-query} and (orientation: landscape) {
+          #{$property}: if($unit == vw, $percent-height, $percent-width);
+        }
+      }
+    }
+  }
+}

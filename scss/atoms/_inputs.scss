@@ -1,0 +1,30 @@
+// ==========================================================================
+// $input base
+// ==========================================================================
+
+#{$all-text-inputs} {
+  -webkit-appearance: none;
+  outline: 0;
+  box-shadow: none;
+  width: 100%;
+  border-radius: rem(10);
+  padding: em(10 15);
+  margin-top: rem(5);
+  margin-bottom: 0.5em;
+  border: rem(3) solid;
+  transition: all 0.25s ease;
+
+  &[disabled] {
+    border-color: #6F6F6F;
+    background-color: #DDDDDD;
+  }
+
+  @include hover {
+    background-color: #E2DA8A;
+  }
+}
+
+textarea {
+  min-height: rem(250);
+  margin-bottom: 0.5em;
+}

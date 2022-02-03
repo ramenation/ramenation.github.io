@@ -1,0 +1,51 @@
+// ==========================================================================
+// $social
+// ==========================================================================
+
+.social {
+  width: 3em;
+  height: 3em;
+  padding: 0.5em;
+  margin: 0 1em;
+  display: block;
+  background-color: $white;
+  border-radius: 50%;
+  border: rem(5) solid $black;
+  transition: all 0.25s ease;
+
+  @include hover {
+    background-color: #CF9AF8;
+  }
+
+  @include media('>=tablet') {
+    padding: 0.7em;
+  }
+}
+
+.btn__socials {
+  @include reset-list;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+
+// ==========================================================================
+// $form button
+// ==========================================================================
+
+button {
+  margin: 0 auto;
+  font-family: $font-family-heading;
+  text-transform: uppercase;
+  padding: em(10 15);
+  border-radius: rem(50);
+  border: rem(3) solid;
+  background-color: #29F0DD;
+  transition: all 0.25s ease;
+  cursor: pointer;
+
+  @include hover {
+    background-color: $white;
+  }
+}

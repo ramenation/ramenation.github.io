@@ -1,0 +1,290 @@
+// ==========================================================================
+// $unit conversion
+// ==========================================================================
+
+
+// $em()
+// ==========================================================================
+// Converts one or more pixel values into matching em values.
+//
+// @param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
+// @param {Number} $base [null] - The base value to use when calculating the `em`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$base-font-size` variable as the base.
+//
+// @returns {List} A list of converted values.
+
+@function em($values, $base: null) {
+  $em-values: ();
+  $count: length($values);
+
+  // If no base is defined, defer to the global font size
+  @if $base == null {
+    $base: strip-unit($base-font-size);
+  }
+
+  // If the base font size is a %, then multiply it by 16px
+  // This is because 100% font size = 16px in most all browsers
+  @if unit($base) == '%' {
+    $base: calc($base / 100%) * 16px;
+  }
+
+  @if $count == 1 {
+    @return to-em($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $em-values: append($em-values, to-em(nth($values, $i), $base));
+  }
+
+  @return $em-values;
+}
+
+// Converts a pixel value to matching em value. *Any* value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the rem value is taken from the `$base-font-size` variable.
+// @access private
+//
+// @param {Number} $value - Pixel value to convert.
+// @param {Number} $base [null] - Base for pixel conversion.
+//
+// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
+
+@function to-em($value, $base: null) {
+  // Check if the value is a number
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to em(), which is not a number.';
+
+    @return $value;
+  }
+
+  // Calculate em if units for $value is not em
+  @if unit($value) != 'em' {
+    $value: calc(strip-unit($value) / strip-unit($base)) * 1em;
+  }
+
+  // Turn 0em into 0
+  @if $value == 0em {
+    $value: 0;
+  }
+
+  @return $value;
+}
+
+
+//
+// $rem()
+// ==========================================================================
+// Converts one or more pixel values into matching rem values.
+//
+// @param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
+// @param {Number} $base [null] - The base value to use when calculating the `rem`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$base-font-size` variable as the base.
+//
+// @returns {List} A list of converted values.
+
+@function rem($values, $base: null) {
+  $rem-values: ();
+  $count: length($values);
+
+  // If no base is defined, defer to the global font size
+  @if $base == null {
+    $base: strip-unit($base-font-size);
+  }
+
+  // If the base font size is a %, then multiply it by 16px
+  // This is because 100% font size = 16px in most all browsers
+  @if unit($base) == '%' {
+    $base: calc($base / 100%) * 16px;
+  }
+
+  @if $count == 1 {
+    @return to-rem($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $rem-values: append($rem-values, to-rem(nth($values, $i), $base));
+  }
+
+  @return $rem-values;
+}
+
+// Converts a pixel value to matching rem value. *Any* value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the rem value is taken from the `$base-font-size` variable.
+// @access private
+//
+// @param {Number} $value - Pixel value to convert.
+// @param {Number} $base [null] - Base for pixel conversion.
+//
+// @returns {Number} A number in rems, calculated based on the given value and the base pixel value. rem values are passed through as is.
+
+@function to-rem($value, $base: null) {
+  // Check if the value is a number
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to rem(), which is not a number.';
+
+    @return $value;
+  }
+
+  // Calculate rem if units for $value is not rem
+  @if unit($value) != 'rem' {
+    $value: calc(strip-unit($value) / strip-unit($base)) * 1rem;
+  }
+
+  // Turn 0rem into 0
+  @if $value == 0rem {
+    $value: 0;
+  }
+
+  @return $value;
+}
+
+
+//
+// $px()
+// ==========================================================================
+// Converts one or more pixel values into matching px values.
+//
+// @param {Number|List} $values - One or more values to convert. Be sure to separate them with spaces and not commas. If you need to convert a comma-separated list, wrap the list in parentheses.
+// @param {Number} $base [null] - The base value to use when calculating the `px`. If you're using Foundation out of the box, this is 16px. If this parameter is `null`, the function will reference the `$base-font-size` variable as the base.
+//
+// @returns {List} A list of converted values.
+
+@function px($values, $base: null) {
+  $px-values: ();
+  $count: length($values);
+
+  // If no base is defined, defer to the global font size
+  @if $base == null {
+    $base: strip-unit($base-font-size);
+  }
+
+  // If the base font size is a %, then multiply it by 16px
+  // This is because 100% font size = 16px in most all browsers
+  @if unit($base) == '%' {
+    $base: calc($base / 100%) * 16px;
+  }
+
+  @if $count == 1 {
+    @return to-px($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $px-values: append($px-values, to-px(nth($values, $i), $base));
+  }
+
+  @return $px-values;
+}
+
+// Converts a pixel value to matching px value. *Any* value passed, regardless of unit, is assumed to be a pixel value. By default, the base pixel value used to calculate the px value is taken from the `$base-font-size` variable.
+// @access private
+//
+// @param {Number} $value - Pixel value to convert.
+// @param {Number} $base [null] - Base for pixel conversion.
+//
+// @returns {Number} A number in pxs, calculated based on the given value and the base pixel value. px values are passed through as is.
+
+@function to-px($value, $base: null) {
+  // Check if the value is a number
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to px(), which is not a number.';
+
+    @return $value;
+  }
+
+  // Calculate px if units for $value is not px
+  @if unit($value) != 'px' {
+    $value: strip-unit($value) * strip-unit($base) * 1px;
+  }
+
+  // Turn 0rem into 0
+  @if $value == 0px {
+    $value: 0;
+  }
+
+  @return $value;
+}
+
+
+
+// ==========================================================================
+// $asset helpers
+// ==========================================================================
+// Base path for assets (fonts, images...),
+// should not include trailing slash
+// @access public
+// @type String
+$asset-base-path: 'assets/' !default;
+
+// Asset URL builder
+// @access private
+// @param {String} $type - Asset type, matching folder name
+// @param {String} $file - Asset file name, including extension
+// @return {URL} - A `url()` function leading to the asset
+@function asset($type, $file) {
+  @return $asset-base-path + '/' + $type + '/' + $file;
+}
+
+
+//
+// $img()
+// ==========================================================================
+// Image asset helper
+// @access public
+// @param {String} $file - Asset file name, including extension
+// @return {URL} - A `url()` function leading to the image
+// @require {function} asset
+@function img($file) {
+  @return url(asset('img', $file));
+}
+
+
+//
+// $font()
+// ==========================================================================
+// Font asset helper
+// @access public
+// @param {String} $file - Asset file name, including extension
+// @return {URL} - A `url()` function leading to the font
+// @require {function} asset
+@function font($file) {
+  @return url(asset('fonts', $file));
+}
+
+
+
+
+// ==========================================================================
+// $map functions
+// ==========================================================================
+
+// @source    - http://www.sitepoint.com/extra-map-functions-sass/
+
+//
+// $map-has-nested-keys($map)
+// ==========================================================================
+// $map       - Parent map to get values from.
+// @returns   - boolean
+// @source    - http://www.sitepoint.com/better-solution-managing-z-index-sass/
+
+@function map-has-nested-keys($map, $keys...) {
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+      @return false;
+    }
+
+    $map: map-get($map, $key);
+  }
+
+  @return true;
+}
+
+
+//
+// $map-deep-get($map)
+// ==========================================================================
+// $map       - Parent map to get values from.
+// @returns   - `$map`
+// @source    - http://www.sitepoint.com/better-solution-managing-z-index-sass/
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}

@@ -1,0 +1,25 @@
+// ==========================================================================
+// $container
+// ==========================================================================
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+
+  @include media('>=desktop-l') {
+    width: 75%;
+  }
+}
+
+
+section {
+  padding-top: span(2);
+
+  @include media('>=tablet') {
+    padding-top: rem(80);
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    padding-top: rem(150);
+  }
+}

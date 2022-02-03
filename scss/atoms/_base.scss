@@ -1,0 +1,70 @@
+// ==========================================================================
+// $base prelims
+// ==========================================================================
+
+// Tells browser to render viewport width as device width:
+@viewport { width: device-width; }
+
+// Tells browsers to switch to the border-box-sizing property:
+*,
+*:after,
+*:before { box-sizing: border-box; }
+
+// Apply base font size to html:
+@include typi-init;
+
+
+
+
+// ==========================================================================
+// $base
+// ==========================================================================
+
+html {
+  height: 100%;
+}
+
+body {
+  @include font-smoothing;
+  text-rendering: optimizeLegibility;
+  min-height: 100%;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: $font-family-default;
+}
+
+img, video {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1 {
+  @include typi('heading-xl');
+  font-family: $font-family-display;
+}
+
+h2 {
+  @include typi('heading-l');
+  font-family: $font-family-display;
+  text-transform: uppercase;
+  letter-spacing: rem(3);
+}
+
+h3 {
+  @include typi('heading');
+  font-family: $font-family-heading;
+  font-weight: normal;
+}
+
+p, ol, ul {
+  @include typi('p');
+}
+
+.heading {
+  text-align: center;
+}

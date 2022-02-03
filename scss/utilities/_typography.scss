@@ -1,0 +1,49 @@
+// ==========================================================================
+// $type prelims
+// ==========================================================================
+
+$base-font-size:              16px;
+$base-line-height:            1.4;
+
+
+
+
+// ==========================================================================
+// $font stacks
+// ==========================================================================
+
+//
+// $sans
+// ==========================================================================
+
+$font-family-sans-fallback:   $font-stack-helvetica;
+$font-family-sans:            'Roboto Condensed', $font-family-sans-fallback;
+
+
+//
+// $heading
+// ==========================================================================
+
+$font-family-heading-fallback:  $font-stack-georgia;
+$font-family-heading:           'Pally', $font-family-heading-fallback;
+
+
+//
+// $display
+// ==========================================================================
+
+$font-family-display-fallback:   $font-stack-monaco;
+$font-family-display:            'Social Monster', $font-family-display-fallback;
+
+
+
+
+// ==========================================================================
+// $assignments
+// ==========================================================================
+
+
+// Define font stack used for paragraphs.
+// $font-family-default - {string}
+
+$font-family-default:         $font-family-sans;

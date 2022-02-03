@@ -1,0 +1,107 @@
+// ==========================================================================
+// $tabs
+// ==========================================================================
+
+.tabs {
+  margin-top: rem(40);
+  overflow: hidden;
+  border-top: rem(3) solid;
+
+  input[type="checkbox"] {
+    @include hide-visually;
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    // width: span(8);
+    margin: rem(100) auto 0;
+  }
+}
+
+
+//
+// $tabs checked
+// ==========================================================================
+
+.tabs input:checked {
+  + .tab__label {
+    &::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  ~ .tab__content {
+    max-height: 100vh;
+    padding: 0 0 1em;
+  }
+}
+
+
+
+
+// ==========================================================================
+// $tab
+// ==========================================================================
+
+.tab {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: rem(3) solid;
+
+  p, ol, ul {
+    margin-top: 0;
+  }
+}
+
+
+
+
+// ==========================================================================
+// $tab__label
+// ==========================================================================
+
+.tab__label {
+  @include typi('heading');
+  display: flex;
+  align-items: flex-top;
+  justify-content: space-between;
+  padding: 1em 0;
+  cursor: pointer;
+  font-family: $font-family-heading;
+
+  &::after {
+    content: '';
+    display: block;
+    background: {
+      size: contain;
+      position: center;
+      repeat: no-repeat;
+    }
+    min-width: 0.8em;
+    width: 0.8em;
+    height: 0.8em;
+    margin-top: 0.3em;
+    margin-left: 0.5em;
+    background: {
+      image: img('icon-arrow.svg');
+    }
+  }
+}
+
+
+
+
+// ==========================================================================
+// $tab__content
+// ==========================================================================
+
+.tab__content {
+  max-height: 0;
+  padding: 0;
+  transition: all .35s;
+
+  ol, ul {
+    padding-left: 1em;
+  }
+}
+
+

@@ -1,0 +1,20 @@
+// ==========================================================================
+// $footer
+// ==========================================================================
+
+footer {
+  position: relative;
+  margin-top: 10vh;
+
+  .cta {
+    @include center(horizontal);
+  }
+
+  @include media('>=tablet-l', 'landscape') {
+    margin-top: rem(200);
+
+    .cta {
+      top: 7.5%;
+    }
+  }
+}
